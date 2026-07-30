@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Runtime data and artifacts
+data/logs/*
+!data/logs/.gitkeep
+data/models/*
+!data/models/.gitkeep
+data/sqlite/*
+!data/sqlite/.gitkeep
+data/gallery/*
+!data/gallery/.gitkeep
+data/faiss/*
+!data/faiss/.gitkeep
+
+# Editors and OS files
+.idea/
+.vscode/
+.DS_Store
