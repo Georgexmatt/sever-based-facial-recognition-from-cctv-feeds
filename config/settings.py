@@ -23,6 +23,34 @@ class Settings(BaseSettings):
     log_to_file: bool = Field(default=False, description="Write logs to a file in addition to stderr.")
     log_file_path: Path = Field(default=Path("data/logs/app.log"), description="Log file path.")
 
+    scrfd_model_path: Path = Field(
+        default=Path("data/models/scrfd.onnx"),
+        description="Filesystem path to the InsightFace SCRFD ONNX model.",
+    )
+    scrfd_execution_provider: Literal["cpu", "cuda"] = Field(
+        default="cpu",
+        description="Preferred SCRFD execution provider; CUDA falls back to CPU.",
+    )
+    scrfd_confidence_threshold: float = Field(
+        default=0.5,
+        ge=0.0,
+        le=1.0,
+        description="Minimum detection confidence returned to callers.",
+    )
+    scrfd_input_size: tuple[int, int] = Field(
+        default=(640, 640),
+        description="SCRFD detector input size as (width, height).",
+    )
+    scrfd_max_faces: int = Field(
+        default=0,
+        ge=0,
+        description="Maximum faces per image; 0 lets SCRFD return all faces.",
+    )
+    scrfd_nms_metric: Literal["default", "max"] = Field(
+        default="default",
+        description="InsightFace NMS metric used during SCRFD detection.",
+    )
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_prefix="FACE_ATTENDANCE_",
