@@ -13,6 +13,7 @@ dependencies = [
     "loguru>=0.7.3",
     "insightface>=0.7.3",
     "numpy>=2.0.0",
+    # CPU ONNX Runtime provider required by InsightFace SCRFD; do not replace with onnxruntime-gpu.
     "onnxruntime>=1.20.0",
     "opencv-python>=5.0.0",
     "pydantic>=2.13.4",
