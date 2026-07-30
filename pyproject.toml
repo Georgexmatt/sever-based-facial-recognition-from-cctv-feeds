@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "face-attendance"
+version = "0.1.0"
+description = "Server-based facial recognition attendance foundation for CCTV feeds."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.141.1",
+    "loguru>=0.7.3",
+    "pydantic>=2.13.4",
+    "pydantic-settings>=2.7.0",
+    "python-dotenv>=1.2.2",
+    "uvicorn[standard]>=0.52.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]
+addopts = "-ra"
